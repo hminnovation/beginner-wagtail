@@ -71,7 +71,7 @@ def top_menu_children(context, parent, calling_page=None):
     }
 
 
-@register.inclusion_tag('tags/breadcrumbs.html', takes_context=True)
+@register.inclusion_tag('breadcrumbs.html', takes_context=True)
 def breadcrumbs(context):
     self = context.get('self')
     if self is None or self.depth <= 2:

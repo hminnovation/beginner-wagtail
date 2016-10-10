@@ -1,4 +1,4 @@
-{% load compress static wagtailuserbar %}
+{% load compress static navigation_tags wagtailuserbar %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -23,7 +23,9 @@
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
-
+        {% block breadcrumb %}
+            {% breadcrumbs %}
+        {% endblock %}
         {% block content %}{% endblock %}
 
         {% compress js %}

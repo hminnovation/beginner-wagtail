@@ -3,9 +3,23 @@
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
 {% block content %}
-    <h1>Welcome to your new Wagtail site!</h1>
+	{% for skill in skills %}
+		<a href="{{ skill.url }}">{{ skill.title }}</a>
+        
+        <ul class="people">
+        {% for people in skill.skills_person_relationship.all  %}
+        	<li><a href="{{people.url}}">{{ people.title }}</a></li>
+        {% endfor %}
+        </ul>
 
-    <p>You can access the admin interface <a href="{% url 'wagtailadmin_home' %}">here</a> (make sure you have run "dj createsuperuser" in the console first).
+        {% for status in skill.person_employment_relationship.all  %}
+        	{{ status.title }}
+        {% endfor %}
 
-    <p>If you haven't already given the documentation a read, head over to <a href="http://wagtail.readthedocs.org/">http://wagtail.readthedocs.org</a> to start building on Wagtail</p>
+        <ul class="skills">
+        {% for skills in skill.person_skills_relationship.all  %}
+        	<li><a href="{{skills.url}}">{{ skills.title }}</a></li>
+        {% endfor %}
+        </ul>
+	{% endfor %}
 {% endblock %}

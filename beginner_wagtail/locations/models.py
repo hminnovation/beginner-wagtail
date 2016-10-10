@@ -24,7 +24,7 @@ class LocationPage(Page):
     )
 
     body = StreamField(
-        GlobalStreamBlock(), verbose_name="Person's biography", blank=True
+        GlobalStreamBlock(), verbose_name="Location's details", blank=True
         )
     # We've defined the StreamBlock() within blocks.py that we've imported on
     # line 12. Defining it in a different file

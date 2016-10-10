@@ -141,10 +141,30 @@ class PersonPage(Page):
     subpage_types = [
     ]
 
+    # We iterate within the model over the skills, employment status
+    # and location so we don't have to on the template
+    def skills(self):
+        skills = [
+            n.skills for n in self.person_skills_relationship.all()
+        ]
+        return skills
+
+    def employment(self):
+        employment = [
+            n.employment_statuses for n in self.person_employment_relationship.all()
+        ]
+        return employment
+
+    def location(self):
+        location = [
+            n.location for n in self.person_location_relationship.all()
+        ]
+        return location
+
 
 class PersonIndexPage(Page):
     """
-    This is a page to list all the skills on the site
+    This is a page to list all the people on the site
     """
     search_fields = Page.search_fields + [
         index.SearchField('introduction'),
@@ -173,7 +193,7 @@ class PersonIndexPage(Page):
 # Docs http://docs.wagtail.io/en/v1.6.3/topics/pages.html#template-context
     def get_context(self, request):
         context = super(PersonIndexPage, self).get_context(request)
-        context['skills'] = PersonPage.objects.descendant_of(
+        context['people'] = PersonPage.objects.descendant_of(
             self).live().order_by(
             '-first_published_at')
         return context
