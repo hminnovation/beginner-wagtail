@@ -7,19 +7,19 @@
 		<a href="{{ skill.url }}">{{ skill.title }}</a>
         
         <ul class="people">
-        {% for people in skill.skills_person_relationship.all  %}
-        	<li><a href="{{people.url}}">{{ people.title }}</a></li>
+        {% for person in skill.people %}
+                <li>{{person}}</li>
         {% endfor %}
         </ul>
 
-        {% for status in skill.person_employment_relationship.all  %}
-        	{{ status.title }}
-        {% endfor %}
-
-        <ul class="skills">
-        {% for skills in skill.person_skills_relationship.all  %}
-        	<li><a href="{{skills.url}}">{{ skills.title }}</a></li>
-        {% endfor %}
-        </ul>
 	{% endfor %}
 {% endblock %}
+
+{% comment %}
+        <ul class="people">
+        {% for people in skill.skills_person_relationship.all  %}
+                <li><a href="{{people.url}}">{{ people.title }}</a>
+                {{people.title}}</li>
+        {% endfor %}
+        </ul>
+{% endcomment %}

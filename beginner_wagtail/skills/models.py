@@ -38,6 +38,15 @@ class SkillsPage(Page):
     ]
     # Setting a parent means that it can only be added under that parent
 
+    def people(self):
+        people = [
+            n.person_page for n in self.skills_person_relationship.all()
+        ]
+        return people
+    # We get this relationship from the people app using the related
+    # name 'skills_person_relationship' that connects to the parent page
+    # 'person_page'
+
 
 class SkillsIndexPage(Page):
     """
