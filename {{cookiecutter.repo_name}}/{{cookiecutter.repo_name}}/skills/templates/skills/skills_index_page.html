@@ -1,0 +1,26 @@
+{% raw %}{% extends "base.html" %}
+
+{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+
+{% block content %}
+	{% for skill in skills %}
+		<a href="{{ skill.url }}">{{ skill.title }}</a>
+        
+        <ul class="people">
+        {% for person in skill.people %}
+                <li>{{person}}</li>
+        {% endfor %}
+        </ul>
+
+	{% endfor %}
+{% endblock %}
+
+{% comment %}
+        <ul class="people">
+        {% for people in skill.skills_person_relationship.all  %}
+                <li><a href="{{people.url}}">{{ people.title }}</a>
+                {{people.title}}</li>
+        {% endfor %}
+        </ul>
+{% endcomment %}
+{% endraw %}

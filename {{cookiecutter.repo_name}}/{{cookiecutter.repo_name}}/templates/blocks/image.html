@@ -1,0 +1,33 @@
+{% raw %}{% load wagtailimages_tags %}
+
+
+{% if self.style == 'square' %}
+  <div class="block image square">
+    <figure>
+      {% image self.image fill-352x352 %}
+      {% if self.caption %}<figcaption>{{ self.caption }}</figcaption>{% endif %}
+    </figure>
+  </div>
+
+{% elif self.style == 'full' %}
+  <div class="block image">
+    <figure>
+      {% image self.image original %}
+        {% if self.caption %}
+          <figcaption>{{ self.caption }}</figcaption>
+        {% endif %}
+      </div>
+    </figure>
+  </div>
+
+{% elif self.style == 'half' %}
+  <div class="block image">
+    <div class="wrap">
+      <figure>
+      {% image self.image width-1088 %}
+      {% if self.caption %}<figcaption>{{ self.caption }}</figcaption>{% endif %}
+      </figure>
+    </div>
+  </div>
+
+{% endif %}{% endraw %}

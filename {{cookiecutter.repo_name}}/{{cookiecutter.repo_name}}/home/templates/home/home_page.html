@@ -1,0 +1,29 @@
+{% raw %}{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+
+{% block content %}
+
+<div><h1>{{page.organisation_name}}</h1></div>
+
+<div>{% image page.hero_image width-750 as photo %}
+      <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+
+<div><p>{{ page.strapline}}</p></div>
+
+<div>
+{% if page.featured_page_1 %}
+	<li><h2><a href="{{ page.featured_page_1.specific.url }}">{{ page.featured_page_1_text }}</a></h2>
+{% endif %}
+
+{% if page.featured_page_2 %}
+	<h2><a href="{{ page.featured_page_2.specific.url }}">{{ page.featured_page_2_text }}</a></h2>
+{% endif %}
+
+{% if page.featured_page_3 %}
+	<h2><a href="{{ page.featured_page_3.specific.url }}">{{ page.featured_page_3_text }}</a></h2>
+{% endif %}
+</div>
+{% endblock %}
+{% endraw %}

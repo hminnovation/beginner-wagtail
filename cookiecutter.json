@@ -1,0 +1,4 @@
+{
+    "project_name": "The Fellowship",
+    "repo_name": "{{ cookiecutter.project_name|replace(' ', '')|lower }}"
+}
