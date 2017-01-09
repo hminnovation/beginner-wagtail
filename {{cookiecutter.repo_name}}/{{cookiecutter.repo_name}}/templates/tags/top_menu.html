@@ -1,0 +1,24 @@
+{% load static wagtailcore_tags %}
+
+      <nav class="main-menu" role="navigation">
+        <ul class="navigation-menu">
+          <li class="nav-link home-link{% if calling_page.url == '/' %} active-nav-item{% endif %}">
+            <a href="/">
+              <span class="home-icon">
+                <i class="fa fa-home"></i>
+              </span>
+              <span class="home-label">
+                Home
+              </span>
+            </a>
+          </li>
+          {% for menuitem in menuitems %}
+            <li class="nav-link{% if menuitem.has_dropdown %} more{% endif %}{% if menuitem.active %} active-nav-item{% endif %}">
+              <a href="{% pageurl menuitem %}"><span>{{ menuitem.title }}</span></a>
+              {% if menuitem.has_dropdown %}
+                {% top_menu_children parent=menuitem %}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
