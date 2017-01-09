@@ -1,0 +1,27 @@
+// Define breakpoint pixel values
+$breakpoints: (
+  small: 0,
+  medium: 640px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
+);
+$breakpoint-classes: (small medium large xlarge);
+
+// Basic grid system
+@mixin row {
+    padding-left: 200px;
+    padding-right: 200px;
+    @include breakpoint(large down){
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    @include breakpoint(medium down){
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    @include breakpoint(medium down){
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
