@@ -6,6 +6,13 @@ body {
     @include row;
 }
 
+.list {
+    @include grid;
+    .list-3 {
+        @include grid-column(3);
+    }
+}
+
 /* Responsive image/video classes */
 .rich-text img {
     max-width: 100%;

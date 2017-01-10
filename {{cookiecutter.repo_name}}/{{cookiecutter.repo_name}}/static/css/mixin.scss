@@ -1,3 +1,5 @@
+// Very quick series of mixins and variables for the project
+
 // Define breakpoint pixel values
 $breakpoints: (
   small: 0,
@@ -8,10 +10,18 @@ $breakpoints: (
 );
 $breakpoint-classes: (small medium large xlarge);
 
+// Colours
+$grey: #ccc;
+
+// Values
+$max-width: 1240px;
+$global-column: 10px;
+
 // Basic grid system
 @mixin row {
     padding-left: 200px;
     padding-right: 200px;
+    max-width: $max-width;
     @include breakpoint(large down){
         padding-left: 100px;
         padding-right: 100px;
@@ -20,8 +30,41 @@ $breakpoint-classes: (small medium large xlarge);
         padding-left: 50px;
         padding-right: 50px;
     }
-    @include breakpoint(medium down){
+    @include breakpoint(small down){
         padding-left: 20px;
         padding-right: 20px;
     }
+}
+
+@mixin grid {
+  display: flex;
+  flex-wrap: wrap;
+  @include breakpoint(small down){
+    display: block;
+  }
+}
+
+@mixin grid-column($columns) {
+  width: (100%/$columns)-2%;
+  margin-bottom: $global-column;
+  margin-right: $global-column;
+  background-color: $grey;
+  overflow: hidden;
+  @include breakpoint(medium down){
+    width: (100%/(($columns)-1))-2%;
+  }
+  @include breakpoint(small down){
+    width: (100%/(($columns)-2))-2%;
+  }
+
+  //   @if length($columns) == 2 {
+  //     &:nth-of-type(even){
+  //       margin-right: 0;
+  //     }
+  //   @else {
+  //     &:nth-of-type(#{$columns}) {
+  //     background-color: green;
+  //       }
+  //     }
+  //   }
 }
