@@ -10,14 +10,18 @@ from wagtail.wagtailsearch import index
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailadmin.edit_handlers import (
-        FieldPanel, InlinePanel, StreamFieldPanel)
+        FieldPanel,
+        InlinePanel,
+        StreamFieldPanel,
+        PageChooserPanel
+        )
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-from {{ cookiecutter.repo_name }}.blocks import GlobalStreamBlock
+from thefellowship.blocks import GlobalStreamBlock
 
 
 @register_snippet
-class PersonEmploymentStatus(ClusterableModel):
+class PersonStatus(ClusterableModel):
     """
     This snippet allows an editor to define what possible employment statuses
     a staff member may have.
@@ -27,7 +31,7 @@ class PersonEmploymentStatus(ClusterableModel):
         index.SearchField('title'),
     ]
 
-    title = models.CharField("Employment status", max_length=254)
+    title = models.CharField("Status", max_length=254)
 
     panels = [
         FieldPanel('title'),
@@ -38,11 +42,11 @@ class PersonEmploymentStatus(ClusterableModel):
 
     class Meta:
         ordering = ['title']
-        verbose_name = "Employment status"
-        verbose_name_plural = "Employment statuses"
+        verbose_name = "Status"
+        verbose_name_plural = "Statuses"
 
 
-class PersonEmploymentRelationship(models.Model):
+class PersonStatusRelationship(models.Model):
     """
     This defines the relationship between the `PersonEmploymentStatus` snippet
     above and the PersonPage below. It does so by defining a ForeignKey
@@ -51,14 +55,14 @@ class PersonEmploymentRelationship(models.Model):
     Docs: http://www.tivix.com/blog/working-wagtail-i-want-my-m2ms/
     """
     person_page = ParentalKey(
-        'PersonPage', related_name='person_employment_relationship'
+        'PersonPage', related_name='person_status_relationship'
     )
-    employment_statuses = models.ForeignKey(
-        'PersonEmploymentStatus',
-        related_name="employment_person_relationship"
+    person_statuses = models.ForeignKey(
+        'PersonStatus',
+        related_name="status_person_relationship"
     )
     panels = [
-        SnippetChooserPanel('employment_statuses')
+        SnippetChooserPanel('person_statuses')
     ]
 
 
@@ -75,7 +79,7 @@ class PersonLocationRelationship(models.Model):
         related_name="location_person_relationship"
     )
     panels = [
-        FieldPanel('location')
+        PageChooserPanel('location')
     ]
 
 
@@ -91,7 +95,7 @@ class PersonSkillsRelationship(Orderable, models.Model):
         'skills.SkillsPage', related_name='skills_person_relationship'
     )
     panels = [
-        FieldPanel('skills')
+        PageChooserPanel('skills')
     ]
 
 
@@ -117,18 +121,18 @@ class PersonPage(Page):
         InlinePanel(
             'person_skills_relationship',
             label='Skills',
-            min_num=1
+            min_num=None
             ),
         InlinePanel(
-            'person_employment_relationship',
-            label='Employment status',
-            min_num=1,
+            'person_status_relationship',
+            label='Status',
+            min_num=None,
             max_num=1
             ),
         InlinePanel(
             'person_location_relationship',
             label='Location',
-            min_num=1,
+            min_num=None,
             max_num=1
             ),
     ]
@@ -141,7 +145,15 @@ class PersonPage(Page):
     subpage_types = [
     ]
 
-    # We iterate within the model over the skills, employment status
+    api_fields = [
+        'image',
+        'body',
+        'person_skills_relationship',
+        'person_employment_relationship',
+        'person_location_relationship',
+    ]
+
+    # We iterate within the model over the skills, status
     # and location so we don't have to on the template
     def skills(self):
         skills = [
@@ -149,11 +161,11 @@ class PersonPage(Page):
         ]
         return skills
 
-    def employment(self):
-        employment = [
-            n.employment_statuses for n in self.person_employment_relationship.all()
+    def status(self):
+        status = [
+            n.person_statuses for n in self.person_status_relationship.all()
         ]
-        return employment
+        return status
 
     def location(self):
         location = [
