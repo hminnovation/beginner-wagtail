@@ -17,7 +17,7 @@ from wagtail.wagtailadmin.edit_handlers import (
         )
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-from thefellowship.blocks import GlobalStreamBlock
+from {{ cookiecutter.repo_name }}.blocks import GlobalStreamBlock
 
 
 @register_snippet

@@ -1,3 +1,4 @@
+{% raw %}
 Beginner Wagtail
 ==================
 A super straightforward implementation of Wagtail CMS.
@@ -42,3 +43,4 @@ To get around this
    - Default = True
 
 Note: This will be fixed in the future with a fixtures file
+{% endraw %}
