@@ -24,16 +24,8 @@ python manage.py runserver 0.0.0.0:8000
 This project is, loosely, based on a workshops @alexgleason and @heymonkeyriot gave in Philadelphia, March 2016. It's a consolidated basis for doing other workshops in a more logical way.
 
 # Troubleshooting
-## Relationships
-A person requires a relationship with a skill, employment status and location. It means that it's necessary to
-
- - Create a skills index page
- - Create a skills page (or several!)
- - Create a location index page
- - Create a location page (or several!)
- - Create an employment status (or several!)
-
-Note: This will be fixed in the future with a fixtures file
+## Name of project
+You can't name your project `abc`. It conflicts with name spacing in /lib/python3.4/io.py
 
 ## Existing homepage
 Wagtail now comes with a homepage within the model. This unfortunately is not the same as the home app HomePage (`home.HomePage`) that the People, Skills and Location apps are expecting to be children of.
