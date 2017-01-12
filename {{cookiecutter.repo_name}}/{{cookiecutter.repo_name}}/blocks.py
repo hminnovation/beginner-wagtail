@@ -29,7 +29,7 @@ class GlobalStreamBlock(StreamBlock):
         ], blank=True, required=False))
         ],
         classname="title",
-        icon="fa-header",
+        icon="title",
         template="blocks/header.html")
     image = StructBlock([
         ('image', ImageChooserBlock()),
