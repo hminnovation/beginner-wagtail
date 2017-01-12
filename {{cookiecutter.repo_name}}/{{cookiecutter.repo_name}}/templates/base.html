@@ -36,6 +36,10 @@
         {% endblock %}
         {% block content %}{% endblock %}
 
+        {% block footer %}
+            <footer>Copyright for all the Lord of the Rings stuff is copyright New Line Cinema and JRR Tolkien.</footer>
+        {% endblock footer %}
+
         {% compress js %}
             <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
         {% endcompress %}
