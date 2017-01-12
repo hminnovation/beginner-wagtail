@@ -10,7 +10,7 @@ vagrant ssh
 pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
-python manage.py loaddata {{your project name}}/fixtures/db.json
+python manage.py load_initial_data.py
 python manage.py createsuperuser
 python manage.py runserver 0.0.0.0:8000
 ```
