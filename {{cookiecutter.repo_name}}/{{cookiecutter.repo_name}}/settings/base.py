@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    '{{ cookiecutter.repo_name }}'  # To load the management commands
+    '{{ cookiecutter.repo_name }}',  # To load the management commands
     '{{ cookiecutter.repo_name }}.home',
     '{{ cookiecutter.repo_name }}.locations',
     '{{ cookiecutter.repo_name }}.people',
