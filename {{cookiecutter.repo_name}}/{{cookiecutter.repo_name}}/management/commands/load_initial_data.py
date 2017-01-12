@@ -8,7 +8,7 @@ from django.core.management import call_command
 class Command(BaseCommand):
     def handle(self, **options):
         fixtures_dir = os.path.join(settings.PROJECT_DIR, 'fixtures')
-        fixture_file = os.path.join(fixtures_dir, 'test2.json')
+        fixture_file = os.path.join(fixtures_dir, 'db.json')
         image_src_dir = os.path.join(fixtures_dir, 'images')
         image_dest_dir = os.path.join(settings.MEDIA_ROOT, 'original_images')
 
