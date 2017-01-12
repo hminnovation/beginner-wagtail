@@ -74,7 +74,7 @@ class LocationIndexPage(Page):
 # Docs http://docs.wagtail.io/en/v1.6.3/topics/pages.html#template-context
     def get_context(self, request):
         context = super(LocationIndexPage, self).get_context(request)
-        context['skills'] = LocationPage.objects.descendant_of(
+        context['locations'] = LocationPage.objects.descendant_of(
             self).live().order_by(
             '-first_published_at')
         return context
