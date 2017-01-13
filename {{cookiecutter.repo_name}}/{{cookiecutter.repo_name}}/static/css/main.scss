@@ -47,6 +47,18 @@ footer {
     }
 }
 
+.block-embed {
+    display: block;
+    margin: $header-margin auto;
+    width: 50%;
+    @include breakpoint(medium down){
+        width: 80%
+    }
+    @include breakpoint(small down){
+        width: 100%;
+    }
+}
+
 /* List views */
 .list {
     @include grid;
