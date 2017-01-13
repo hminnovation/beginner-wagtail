@@ -1,16 +1,34 @@
 @charset 'utf-8';
+@import 'reset';
 @import 'utils';
 @import 'mixin';
 
 body {
+}
+
+header {
+    @include row;
+    border-bottom: 1px solid $grey;
+}
+
+.main-menu {
+    @include row;
+    border-bottom: 1px solid $grey;
+}
+
+.breadcrumbs {
+    @include row;
+    background-color: $light-grey;
+}
+
+content {
     @include row;
 }
 
-.list {
-    @include grid;
-    .list-3 {
-        @include grid-column(3);
-    }
+footer {
+    @include row;
+    background-color: $light-grey;
+    border-top: 1px solid $grey;
 }
 
 /* Responsive image/video classes */

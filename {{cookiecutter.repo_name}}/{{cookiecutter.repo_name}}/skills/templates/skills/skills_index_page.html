@@ -3,6 +3,7 @@
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
 {% block content %}
+<content>
 	{% for skill in skills %}
 		<a href="{{ skill.url }}">{{ skill.title }}</a>
         
@@ -13,6 +14,7 @@
         </ul>
 
 	{% endfor %}
+</content>
 {% endblock %}
 
 {% comment %}
