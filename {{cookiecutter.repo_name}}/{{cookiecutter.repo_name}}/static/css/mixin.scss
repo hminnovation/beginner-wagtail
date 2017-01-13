@@ -20,6 +20,7 @@ $global-column: 10px;
 
 // Basic grid system
 @mixin row {
+    display: block;
     padding-left: 200px;
     padding-right: 200px;
     max-width: $max-width;
@@ -68,4 +69,19 @@ $global-column: 10px;
   //       }
   //     }
   //   }
+}
+
+// Mixin for typography.scss
+// Transitions - Usage: @include transition(all .2s ease);
+@mixin transition($args...) {
+    -webkit-transition: $args;
+       -moz-transition: $args;
+        -ms-transition: $args;
+         -o-transition: $args;
+            transition: $args;
+}
+
+// PX to REM - Usage: font-size: rem(37px);
+@function rem($px, $base: $base-font-size) {
+    @return ($px / $base) * 1rem;
 }
