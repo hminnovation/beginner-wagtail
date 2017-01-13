@@ -1,6 +1,6 @@
 {% raw %}{% load wagtailimages_tags %}
 
-{% elif self.style == 'full' %}
+{% if self.style == 'full' %}
   <div class="block image">
     <figure>
       {% image self.image original %}
