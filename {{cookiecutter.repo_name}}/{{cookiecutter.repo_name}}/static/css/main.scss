@@ -37,6 +37,7 @@ footer {
     @include row;
     background-color: $light-grey;
     border-top: 1px solid $grey;
+    margin-top: $header-margin;
 }
 
 /* Detail views */
@@ -56,6 +57,21 @@ footer {
     }
     @include breakpoint(small down){
         width: 100%;
+    }
+}
+
+.block-image {
+    .image.half {
+        width: 50%;
+        float: right;
+        /* @to-do this is awful and doesn't really work as supposed to */
+        figure {
+            float: right;
+            width: 80%;
+            img {
+                width: 80%;
+            }
+        }
     }
 }
 

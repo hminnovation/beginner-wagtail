@@ -1,7 +1,7 @@
 {% raw %}{% load wagtailimages_tags %}
 
 {% if self.style == 'full' %}
-  <div class="block image">
+  <div class="image full">
     <figure>
       {% image self.image original %}
         {% if self.caption %}
@@ -12,13 +12,11 @@
   </div>
 
 {% elif self.style == 'half' %}
-  <div class="block image">
-    <div class="wrap">
+  <div class="image half">
       <figure>
       {% image self.image width-1088 %}
       {% if self.caption %}<figcaption>{{ self.caption }}</figcaption>{% endif %}
       </figure>
-    </div>
   </div>
 
 {% endif %}{% endraw %}
