@@ -24,3 +24,7 @@ The Cookiecutter project can be built with the following commands
 ```
 
 Please refer to `{{your_project_name}}`/readme.md for information on installing and running Wagtail once the Cookiecutter has been installed.
+
+# Troubleshooting
+## Name of project
+You can't name your project `abc`. It conflicts with name spacing in /lib/python3.4/io.py
