@@ -62,6 +62,7 @@ $border-color: #DADADA;
 
 // Headers
 h1, h2, h3, h4, h5, h6 {
+    font-family: $title-font-family;
     margin: $header-margin * 1.5 0 $header-margin 0;
     color: $header-color;
     line-height: $header-line-height;
@@ -74,6 +75,7 @@ h1 {
 
 h2 {
     font-size: $header-size / 1.3;
+    margin-bottom: $header-margin / 2;
 }
 
 h3 {

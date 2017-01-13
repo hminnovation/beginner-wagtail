@@ -1,9 +1,12 @@
+/* A quick SASS file to style the wagtail-beginner site */
+
 @charset 'utf-8';
 @import 'reset';
 @import 'utils';
 @import 'mixin';
 @import 'typography';
 
+/* Architecture */
 body {
 }
 
@@ -15,6 +18,10 @@ header {
 .main-menu {
     @include row;
     border-bottom: 1px solid $grey;
+    li {
+        display: inline-block;
+        margin-left: 20px;
+    }
 }
 
 .breadcrumbs {
@@ -32,6 +39,23 @@ footer {
     border-top: 1px solid $grey;
 }
 
+/* Detail views */
+.block-paragraph {
+    margin-bottom: $header-margin / 2;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* List views */
+.list {
+    @include grid;
+    .list-3 {
+        @include grid-column(3);
+    }
+}
+
+/* From Wagtail core */
 /* Responsive image/video classes */
 .rich-text img {
     max-width: 100%;
