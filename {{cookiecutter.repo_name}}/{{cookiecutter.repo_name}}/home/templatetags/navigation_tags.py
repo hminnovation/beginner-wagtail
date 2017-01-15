@@ -1,7 +1,16 @@
 from django import template
 from wagtail.wagtailcore.models import Page
+from {{ cookiecutter.repo_name }}.home.models import HomePage
 
 register = template.Library()
+
+
+@register.inclusion_tag('tags/title.html', takes_context=True)
+def title(context):
+    return {
+        'title': HomePage.objects.all(),
+        'request': context['request'],
+    }
 
 
 @register.assignment_tag(takes_context=True)
