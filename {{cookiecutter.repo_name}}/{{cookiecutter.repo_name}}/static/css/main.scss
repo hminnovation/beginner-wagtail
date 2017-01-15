@@ -12,21 +12,50 @@ body {
 
 header {
     @include row;
-    border-bottom: 1px solid $grey;
+    border-bottom: 1px solid $light-grey;
+    font-family: $title-font-family;
+    font-size: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .main-menu {
     @include row;
+    padding-bottom: $header-margin / 2;
     border-bottom: 1px solid $grey;
+    ul {
+        margin: 0;
+    }
     li {
         display: inline-block;
-        margin-left: 20px;
+        margin-right: 40px;
+        &.current {
+            border-bottom: 6px solid $link-color;
+            padding-bottom: 8px;
+            margin-bottom: -12px;
+        }
     }
 }
 
 .breadcrumbs {
     @include row;
     background-color: $light-grey;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    li {
+        display: inline-block;
+        margin-right: $header-margin / 2;
+        &::after {
+                content: "»";
+                margin-left: $header-margin / 2;
+        }
+    &:last-child {
+        &::after {
+            display: none;
+            }
+        }
+    }
 }
 
 content {

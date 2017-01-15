@@ -23,7 +23,6 @@ $global-column: 10px;
     display: block;
     padding-left: 200px;
     padding-right: 200px;
-    max-width: $max-width;
     @include breakpoint(large down){
         padding-left: 100px;
         padding-right: 100px;
