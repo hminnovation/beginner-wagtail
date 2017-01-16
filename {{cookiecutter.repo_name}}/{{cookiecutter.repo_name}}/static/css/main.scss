@@ -64,7 +64,6 @@ header {
 content {
     h1 {
         @include row;
-        margin-top: -55px;
         position: relative;
     }
     .lead_image {
@@ -99,6 +98,13 @@ footer {
 }
 
 /* Detail views */
+.template-location-page {
+    content {
+        h1 {
+            margin-top: -55px;
+        }
+    }
+}
 .block-paragraph {
     @include row;
     @include max-width-limit;
