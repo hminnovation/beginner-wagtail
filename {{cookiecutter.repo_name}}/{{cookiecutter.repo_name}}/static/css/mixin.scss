@@ -37,6 +37,15 @@ $global-column: 10px;
     }
 }
 
+@mixin max-width {
+  max-width: $max-width;
+}
+
+@mixin max-width-limit {
+  max-width: $max-width / 1.5;
+}
+
+
 @mixin grid {
   display: flex;
   flex-wrap: wrap;
