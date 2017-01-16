@@ -177,6 +177,7 @@ class PersonPage(Page):
         'skills_object'
     ]
 
+
 class PersonIndexPage(Page):
     """
     This is a page to list all the people on the site
@@ -185,11 +186,21 @@ class PersonIndexPage(Page):
         index.SearchField('introduction'),
     ]
 
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='People listing image'
+    )
+
     introduction = models.TextField(
         help_text='Text to describe the index page',
         blank=True)
 
     content_panels = Page.content_panels + [
+        ImageChooserPanel('image'),
         FieldPanel('introduction')
     ]
 

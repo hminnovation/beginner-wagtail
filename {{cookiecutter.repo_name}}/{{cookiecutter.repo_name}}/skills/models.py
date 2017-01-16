@@ -56,11 +56,21 @@ class SkillsIndexPage(Page):
         index.SearchField('introduction'),
     ]
 
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='Skills listing image'
+    )
+
     introduction = models.TextField(
         help_text='Text to describe the index page',
         blank=True)
 
     content_panels = Page.content_panels + [
+        ImageChooserPanel('image'),
         FieldPanel('introduction')
     ]
 
