@@ -61,6 +61,12 @@ class HomePage(Page):
         verbose_name='Third featured page'
     )
 
+    copyright_notice = models.CharField(
+        'Copyright notice to appear on footer pages',
+        null=True,
+        blank=True,
+        max_length=526)
+
     content_panels = Page.content_panels + [
             FieldPanel('organisation_name'),
             ImageChooserPanel('hero_image'),
@@ -77,6 +83,7 @@ class HomePage(Page):
                 FieldPanel('featured_page_3_text'),
                 PageChooserPanel('featured_page_3'),
             ], heading="Feature page 3"),
+            FieldPanel('copyright_notice'),
         ]
 
     # Only let the root page be a parent

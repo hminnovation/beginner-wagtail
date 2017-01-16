@@ -6,9 +6,19 @@ register = template.Library()
 
 
 @register.inclusion_tag('tags/title.html', takes_context=True)
+# @TODO We should better specify `HomePage.objects.all` since on Wagtail there can
+# be multiple homepages
 def title(context):
     return {
         'title': HomePage.objects.all(),
+        'request': context['request'],
+    }
+
+
+@register.inclusion_tag('tags/footer.html', takes_context=True)
+def footer(context):
+    return {
+        'footer': HomePage.objects.all(),
         'request': context['request'],
     }
 

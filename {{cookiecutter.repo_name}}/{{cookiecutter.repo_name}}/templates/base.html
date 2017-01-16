@@ -40,7 +40,13 @@
         {% block content %}{% endblock %}
 
         {% block footer %}
-            <footer>Copyright for all the Lord of the Rings stuff is copyright New Line Cinema and JRR Tolkien.</footer>
+            <footer>
+                {% footer %}
+                {% comment %}
+                    This tag is controlled by a template tag (navigation_tags.py)
+                    and will show a copyright notice if present.
+                {% endcomment %}
+            </footer>
         {% endblock footer %}
 
         {% compress js %}
