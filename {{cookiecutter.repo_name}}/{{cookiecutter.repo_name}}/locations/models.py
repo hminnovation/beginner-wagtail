@@ -10,7 +10,7 @@ from wagtail.wagtailadmin.edit_handlers import (
         FieldPanel, InlinePanel, StreamFieldPanel)
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-from testingdelete7.blocks import GlobalStreamBlock
+from {{cookiecutter.repo_name}}.blocks import GlobalStreamBlock
 
 
 class LocationPage(Page):
