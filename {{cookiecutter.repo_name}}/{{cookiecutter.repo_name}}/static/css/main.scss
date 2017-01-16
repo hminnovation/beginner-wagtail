@@ -59,7 +59,31 @@ header {
 }
 
 content {
-    @include row;
+    h1 {
+        @include row;
+        margin-top: -55px;
+        position: relative;
+    }
+    .lead_image {
+        max-height: 70vh;
+        overflow: hidden;
+        position: relative;
+        .gradient {
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) 10%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 20%);
+            bottom: 0;
+            height: 100px;
+            position: absolute;
+            width: 100%;
+        }
+        img {
+            margin: 0;
+            height: auto;
+            width: 100%;
+        }
+    }
+    main {
+        position: relative;
+    }
 }
 
 footer {
@@ -73,6 +97,7 @@ footer {
 
 /* Detail views */
 .block-paragraph {
+    @include row;
     @include max-width-limit;
     margin-bottom: $header-margin / 2;
     &:last-child {
@@ -80,11 +105,55 @@ footer {
     }
 }
 
+.block-blockquote {
+    width: 250px;
+    float: right;
+    margin-right: 30%;
+    margin-left: 50px;
+    blockquote {
+        font-family: $title-font-family;
+        margin: 20px 0;
+        text-align: left;
+        &::before {
+            content: "\201C";
+            display: block;
+            font-family: serif;
+            font-size: 4em;
+            margin-bottom: -20px;
+            margin-left: -10px;
+            opacity: 0.5;
+        }
+        footer {
+            // @TODO these are mostly resets because of sitewide footer
+            background-color: transparent;
+            font-family: $font-family;
+            font-style: normal;
+            margin-top: 10px;
+            padding: 0;
+            // reset hack. sorry.
+            padding-top: 10px;
+            .attribute_group {
+                margin-top: 0;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
 .block-header {
+    @include row;
     @include max-width-limit;
 }
 
+.block-header + .block-header {
+    h2 {
+        margin-top: 0;
+        color: pink;
+    }
+}
+
 .block-embed {
+    @include row;
     display: block;
     margin: $header-margin 0;
     @include max-width-limit;
@@ -97,17 +166,23 @@ footer {
 }
 
 .block-image {
+    @include row;
     .image.half {
         width: 50%;
         float: right;
         /* @to-do this is awful and doesn't really work as supposed to */
         figure {
             float: right;
+            margin: 10px 0;
             width: 80%;
             img {
+                height: auto;
                 width: 80%;
             }
         }
+    }
+    .image.full {
+        height: auto;
     }
 }
 
