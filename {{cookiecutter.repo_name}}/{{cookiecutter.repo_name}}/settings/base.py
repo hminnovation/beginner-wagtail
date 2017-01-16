@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'wagtail.wagtailcore',
 
     'wagtail.contrib.wagtailstyleguide',
+    'wagtail.contrib.wagtailapi',
+    'rest_framework',
 
     'modelcluster',
     'compressor',

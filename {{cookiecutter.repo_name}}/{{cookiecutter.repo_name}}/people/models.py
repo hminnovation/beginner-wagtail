@@ -17,7 +17,7 @@ from wagtail.wagtailadmin.edit_handlers import (
         )
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-from {{ cookiecutter.repo_name }}.blocks import GlobalStreamBlock
+from testingdelete7.blocks import GlobalStreamBlock
 
 
 @register_snippet
@@ -145,14 +145,6 @@ class PersonPage(Page):
     subpage_types = [
     ]
 
-    api_fields = [
-        'image',
-        'body',
-        'person_skills_relationship',
-        'person_employment_relationship',
-        'person_location_relationship',
-    ]
-
     # We iterate within the model over the skills, status
     # and location so we don't have to on the template
     def skills(self):
@@ -173,6 +165,17 @@ class PersonPage(Page):
         ]
         return location
 
+    def skills_object(obj):
+        skills = ','.join([
+                str(n.skills.id) for n in obj.person_skills_relationship.all()
+        ])
+        return skills
+
+    api_fields = [
+        'image',
+        'body',
+        'skills_object'
+    ]
 
 class PersonIndexPage(Page):
     """

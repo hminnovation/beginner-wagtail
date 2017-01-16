@@ -10,7 +10,7 @@ from wagtail.wagtailadmin.edit_handlers import (
         FieldPanel, InlinePanel, StreamFieldPanel)
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-from {{ cookiecutter.repo_name }}.blocks import GlobalStreamBlock
+from testingdelete7.blocks import GlobalStreamBlock
 
 
 class LocationPage(Page):
@@ -42,6 +42,8 @@ class LocationPage(Page):
     subpage_types = [
     ]
 
+    api_fields = ['image', 'body']
+
 
 class LocationIndexPage(Page):
     """
@@ -67,6 +69,8 @@ class LocationIndexPage(Page):
     subpage_types = [
         'LocationPage'
     ]
+
+    api_fields = ['introduction']
 
 # Strictly speaking this isn't necessary since it's just doing the default
 # behaviour of Wagtail e.g. gets all person pages that are my descendent, show
