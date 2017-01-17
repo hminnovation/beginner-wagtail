@@ -307,6 +307,12 @@ footer.site-footer {
     }
 }
 
+.template-skills-index-page {
+    content {
+        @include row;
+    }
+}
+
 /* Quick widths */
 .half { 
     width: 50%;

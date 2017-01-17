@@ -4,25 +4,16 @@
 
 {% block content %}
 <content>
-	{% for skill in skills %}
-		<a href="{{ skill.url }}">{{ skill.title }}</a>
-        
-        <ul class="people">
-        {% for person in skill.people %}
-                <li>{{person}}</li>
-        {% endfor %}
-        </ul>
+    {% for skill in skills %}
+            <h2>{{ skill.title }}</h2>
 
-	{% endfor %}
+    <ul class="people">
+    {% for person in skill.people %}
+            <li><a href="{{ person.url }}">{{person.title}}</a></li>
+    {% endfor %}
+    </ul>
+
+    {% endfor %}
 </content>
 {% endblock %}
-
-{% comment %}
-        <ul class="people">
-        {% for people in skill.skills_person_relationship.all  %}
-                <li><a href="{{people.url}}">{{ people.title }}</a>
-                {{people.title}}</li>
-        {% endfor %}
-        </ul>
-{% endcomment %}
 {% endraw %}
