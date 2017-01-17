@@ -88,7 +88,7 @@ content {
     }
 }
 
-footer {
+footer.site-footer {
     @include row;
     background-color: $light-grey;
     border-top: 1px solid $grey;
@@ -200,6 +200,65 @@ footer {
     @include grid;
     .list-3 {
         @include grid-column(3);
+    }
+}
+
+/* Quick widths */
+.half { 
+    width: 50%;
+}
+.percent40 {
+    width: 40%;
+}
+.percent60 {
+    width: 60%;
+}
+
+/* Homepage */
+.template-home-page {
+    .strapline {
+        @include row;
+        font-size: 2em;
+        p {
+            font-size: 1em;
+            padding: 20px 0;
+        }
+    }
+    .row-one, .row-two, .row-three {
+        @include row;
+        display: flex;
+        p {
+            font-size: 1.6em;
+            line-height: 1.8;
+            margin-top: 30px;
+            max-width: 550px;
+        }
+        footer {
+            margin-top: 20px;
+            a::after {
+                content: "\27F6";
+                margin-left: 10px;
+            }
+        }
+        img {
+            max-height: 400px;
+            width: auto;
+        }
+    }
+    .row-one, .row-two {
+        border-bottom: 1px solid $grey;
+    }
+    h2 {
+        margin-top: 60px;
+        a {
+            color: $header-color;
+            font-size: 72px;
+            font-weight: bold;
+        }
+    }
+    .row-two, .row-three {
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
 }
 

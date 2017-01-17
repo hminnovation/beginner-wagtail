@@ -4,26 +4,49 @@
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
 {% block content %}
+<content>
+<div class="strapline"><p>{{ page.strapline}}</p></div>
 
-<div><h1>{{page.organisation_name}}</h1></div>
-
-<div>{% image page.hero_image width-750 as photo %}
-      <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
-
-<div><p>{{ page.strapline}}</p></div>
-
-<div>
 {% if page.featured_page_1 %}
-	<li><h2><a href="{{ page.featured_page_1.specific.url }}">{{ page.featured_page_1_text }}</a></h2>
+    <div class="row-one">
+        <div class="percent40">
+            {% image page.featured_page_1.specific.image width-400 as page_1_photo %}
+                  <img src="{{ page_1_photo.url }}" width="{{ page_1_photo.width }}" height="{{ page_1_photo.height }}" alt="{{ page_1_photo.alt }}" />
+        </div>
+        <div class="percent60">
+            <h2><a href="{{ page.featured_page_1.specific.url }}">{{ page.featured_page_1.specific.title }}</a></h2>
+            <p>{{ page.featured_page_1.specific.introduction }}</p>
+            <footer><a href="{{ page.featured_page_1.specific.url }}">Read more about {{ page.featured_page_1.specific.title|lower }}</a></footer>
+        </div>
+    </div>
 {% endif %}
 
 {% if page.featured_page_2 %}
-	<h2><a href="{{ page.featured_page_2.specific.url }}">{{ page.featured_page_2_text }}</a></h2>
+    <div class="row-two">
+        <div class="half">
+            <h2><a href="{{ page.featured_page_2.specific.url }}">{{ page.featured_page_2.specific.title }}</a></h2>
+            <p>{{ page.featured_page_2.specific.introduction }}</p>
+            <footer><a href="{{ page.featured_page_2.specific.url }}">Read more about {{ page.featured_page_2.specific.title|lower }}</a></footer>
+        </div>
+        <div class="half">
+            {% image page.featured_page_2.specific.image width-400 as page_2_photo %}
+                  <img src="{{ page_2_photo.url }}" width="{{ page_2_photo.width }}" height="{{ page_2_photo.height }}" alt="{{ page_2_photo.alt }}" />
+        </div>
+    </div>
 {% endif %}
 
 {% if page.featured_page_3 %}
-	<h2><a href="{{ page.featured_page_3.specific.url }}">{{ page.featured_page_3_text }}</a></h2>
+    <div class="row-three">
+        <div class="percent40">
+            {% image page.featured_page_3.specific.image width-400 as page_3_photo %}
+                  <img src="{{ page_3_photo.url }}" width="{{ page_3_photo.width }}" height="{{ page_3_photo.height }}" alt="{{ page_3_photo.alt }}" />
+        </div>
+        <div class="percent60">
+            <h2><a href="{{ page.featured_page_3.specific.url }}">{{ page.featured_page_3.specific.title }}</a></h2>
+            <p>{{ page.featured_page_3.specific.introduction }}</p>
+            <footer><a href="{{ page.featured_page_3.specific.url }}">Read more about {{ page.featured_page_3.specific.title|lower }}</a></footer>
+        </div>
+    </div>
 {% endif %}
-</div>
-{% endblock %}
-{% endraw %}
+</content>
+{% endblock %}{% endraw %}

@@ -19,16 +19,6 @@ class HomePage(Page):
 
     strapline = models.CharField("Organisation strap line", max_length=254)
 
-    hero_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+',
-        help_text='The image to introduce the site'
-    )
-
-    featured_page_1_text = models.CharField(max_length=35, blank=True)
     featured_page_1 = models.ForeignKey(
         'wagtailcore.Page',
         null=True,
@@ -39,7 +29,6 @@ class HomePage(Page):
         verbose_name='First featured page'
     )
 
-    featured_page_2_text = models.CharField(max_length=35, blank=True)
     featured_page_2 = models.ForeignKey(
         'wagtailcore.Page',
         null=True,
@@ -50,7 +39,6 @@ class HomePage(Page):
         verbose_name='Second featured page'
     )
 
-    featured_page_3_text = models.CharField(max_length=35, blank=True)
     featured_page_3 = models.ForeignKey(
         'wagtailcore.Page',
         null=True,
@@ -69,18 +57,14 @@ class HomePage(Page):
 
     content_panels = Page.content_panels + [
             FieldPanel('organisation_name'),
-            ImageChooserPanel('hero_image'),
             FieldPanel('strapline'),
             MultiFieldPanel([
-                FieldPanel('featured_page_1_text'),
                 PageChooserPanel('featured_page_1'),
             ], heading="Feature page 1"),
             MultiFieldPanel([
-                FieldPanel('featured_page_2_text'),
                 PageChooserPanel('featured_page_2'),
             ], heading="Feature page 2"),
             MultiFieldPanel([
-                FieldPanel('featured_page_3_text'),
                 PageChooserPanel('featured_page_3'),
             ], heading="Feature page 3"),
             FieldPanel('copyright_notice'),
