@@ -49,16 +49,28 @@ $global-column: 10px;
 @mixin grid {
   display: flex;
   flex-wrap: wrap;
+  padding-left: 200px;
+  padding-right: 200px;
+  @include breakpoint(large down){
+      padding-left: 100px;
+      padding-right: 100px;
+  }
+  @include breakpoint(medium down){
+      padding-left: 50px;
+      padding-right: 50px;
+  }
   @include breakpoint(small down){
-    display: block;
+      display: block;
+      padding-left: 20px;
+      padding-right: 20px;
   }
 }
 
 @mixin grid-column($columns) {
   width: (100%/$columns)-2%;
-  margin-bottom: $global-column;
-  margin-right: $global-column;
-  background-color: $grey;
+  margin-bottom: $global-column * 2;
+  margin-right: $global-column * 2;
+  background-color: $light-grey;
   overflow: hidden;
   @include breakpoint(medium down){
     width: (100%/(($columns)-1))-2%;

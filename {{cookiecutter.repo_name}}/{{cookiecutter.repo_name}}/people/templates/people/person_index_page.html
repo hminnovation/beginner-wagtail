@@ -6,20 +6,27 @@
 {% block content %}
 <content>
 <h1>{{ page.title }}</h1>
-<div class="list grid-parent">
+<div class="people list grid-parent">
     {% for person in people %}
     <div class="list-item list-3">
         <div class="image">
-        {% image person.image width-400 as photo %}
+        {% image person.image fill-400x168-c100 as photo %}
               <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
         </div>
         {# end image #}
 
         <div class="text">
         <h2><a href="{{ person.url }}">{{ person.title }}</a></h2>
+        <ul class="skills">
+            {% for skill in person.skills  %}
+            {% comment %}@TODO create urls.py to use child reference to link to parent{% endcomment %}
+                <li><a href="#">{{ skill.title }}</a>
+                {% if not forloop.last %}, {% endif %}</li>
+            {% endfor %}
+        </ul>
         <p class="location"><img src="/static/images/map-marker.png">
         {% for place in person.location  %}
-            {{ place.title }}
+            <a href="place.url">{{ place.title }}</a>
             {% if not forloop.last %}, {% endif %}
         {% endfor %}</p>
         </div>
@@ -27,5 +34,4 @@
     {% endfor %}
 </div>
 </content>
-{% endblock %}
-{% endraw %}
+{% endblock %}{% endraw %}
