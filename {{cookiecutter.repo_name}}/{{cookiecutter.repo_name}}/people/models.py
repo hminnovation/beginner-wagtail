@@ -213,13 +213,11 @@ class PersonIndexPage(Page):
         'PersonPage'
     ]
 
-# Strictly speaking this isn't necessary since it's just doing the default
-# behaviour of Wagtail e.g. gets all person pages that are my descendent, show
-# them if they're published ('live') and order by their first published date
+# We're using get context to organise alphabetically
 # Docs http://docs.wagtail.io/en/v1.6.3/topics/pages.html#template-context
     def get_context(self, request):
         context = super(PersonIndexPage, self).get_context(request)
         context['people'] = PersonPage.objects.descendant_of(
             self).live().order_by(
-            '-first_published_at')
+            'title')
         return context
