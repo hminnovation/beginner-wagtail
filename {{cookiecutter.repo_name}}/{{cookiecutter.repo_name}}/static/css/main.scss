@@ -105,6 +105,29 @@ footer.site-footer {
         }
     }
 }
+
+.template-person-page {
+    .person-image {
+        @include row;
+        border-radius: 100%;
+        margin-left: -50px;
+    }
+    aside {
+        @include row;
+        display: flex;
+        .status-location {
+            display: flex;
+            flex-direction: column;
+            margin-left: 80px;
+        }
+    }
+    main {
+        h4 {
+            @include row;
+        }
+    }
+}
+
 .block-paragraph {
     @include row;
     @include max-width-limit;

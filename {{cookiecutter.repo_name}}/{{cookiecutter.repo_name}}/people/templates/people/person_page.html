@@ -5,33 +5,40 @@
 
 {% block content %}
 <content>
-		<h1>{{ page.title }}</h1>
-
-		<div class="image">
-        {% image page.image width-400 as photo %}
-              <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+        <div class="image">
+        {% image page.image fill-200x200-c100 as photo %}
+              <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="person-image" />
         </div>
-        {# end image #}
+        <h1>{{ page.title }}</h1>
+        <aside>
+            <div class="skills">
+                <h3>Skills</h3>
+                <ul class="skills">
+                {% for skill in page.skills  %}
+                    <li><a href="{{ skill.url }}">{{ skill.title }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class="status-location">
+                <div class="status">
+                    <h4>Status</h4>
+                    {% for status in page.status %}
+                        {{ status.title }}
+                    {% endfor %}
+                </div>
+                
+                <div class="location">
+                    <h4>Location</h4>
+                    {% for place in page.location %}
+                        <a href="{{place.url}}">{{ place.title }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </aside>
 
-        <h3>Skills</h3>
-        <ul class="skills">
-        {% for skill in page.skills  %}
-            <li><a href="{{ skill.url }}">{{ skill.title }}</a></li>
-        {% endfor %}
-        </ul>
-
-        <h4>Role</h4>
-        {% for status in page.employment %}
-            {{ status }}
-        {% endfor %}
-        
-        <h4>Location</h4>
-        {% for place in page.location %}
-            <a href="{{place.url}}">{{ place.title }}</a>
-        {% endfor %}
-
-        <h4>Biography</h4>
-        {{ page.body }}
+        <main role="main">
+            <h4 class>Biography</h4>
+            {{ page.body }}
+        </main>
 </content>
-{% endblock %}
-{% endraw %}
+{% endblock %}{% endraw %}
