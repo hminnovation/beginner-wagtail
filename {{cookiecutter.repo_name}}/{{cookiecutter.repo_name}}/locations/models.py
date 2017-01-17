@@ -42,6 +42,13 @@ class LocationPage(Page):
     subpage_types = [
     ]
 
+    def people(self):
+        # Defined via the related name on the people/models.py person model
+        people = [
+            n.person_page for n in self.location_person_relationship.all()
+        ]
+        return people
+
     api_fields = ['image', 'body']
 
 

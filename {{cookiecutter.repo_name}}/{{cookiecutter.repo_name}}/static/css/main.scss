@@ -203,7 +203,7 @@ footer.site-footer {
     }
 }
 
-.people {
+.people, .locations {
     .list-item {
         .image {
             max-height: 168px;
@@ -237,6 +237,23 @@ footer.site-footer {
                     margin: 5px 5px 0 -5px;
                     width: auto;
                     height: 24px;
+                }
+            }
+            .people {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0;
+                .person {
+                    display: flex;
+                    flex-direction: column;
+                    list-style: none;
+                    margin: 0 20px 10px 0px;
+                    max-width: 100px;
+                    text-align: center;
+                    img {
+                        border-radius: 100px;
+                        margin: 0 0 10px 0;
+                    }
                 }
             }
         }
