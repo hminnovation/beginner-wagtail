@@ -128,6 +128,29 @@ footer.site-footer {
     }
 }
 
+.template-location-page {
+    aside {
+        @include row;
+        .people {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            .person {
+                display: flex;
+                flex-direction: column;
+                list-style: none;
+                margin: 0 20px 10px 0px;
+                max-width: 100px;
+                text-align: center;
+                img {
+                    border-radius: 100px;
+                    margin: 0 0 10px 0;
+                }
+            }
+        }
+    }
+}
+
 .block-paragraph {
     @include row;
     @include max-width-limit;
@@ -262,6 +285,7 @@ footer.site-footer {
                     height: 24px;
                 }
             }
+            // @TODO de-duplicate
             .people {
                 display: flex;
                 flex-wrap: wrap;

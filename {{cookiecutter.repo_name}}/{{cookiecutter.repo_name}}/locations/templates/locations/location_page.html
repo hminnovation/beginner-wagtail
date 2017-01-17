@@ -16,5 +16,18 @@
     <main role="main">
     	{{ page.body }}
     </main>
+
+    <aside>
+    <h2>People in {{ page.title }}</h2>
+    	<ul class="people">
+            {% for person in page.people  %}
+            {% comment %}@TODO create urls.py to use child reference to link to parent{% endcomment %}
+                <li class="person">
+                {% image person.image fill-100x100-c100 as person_photo %}
+                    <a href="{{ person.url }}"><img src="{{ person_photo.url }}" width="{{ person_photo.width }}" height="{{ person_photo.height }}" alt="{{ person_photo.alt }}" title="{{ person.title }}" /></a>
+                <small><a href="{{ person.url }}">{{ person.title }}</a></small></li>
+            {% endfor %}
+        </ul>
+     </aside>
 </content>
 {% endblock %}{% endraw %}
