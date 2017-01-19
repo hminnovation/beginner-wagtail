@@ -3,18 +3,23 @@ from __future__ import unicode_literals
 from django.db import models
 
 from wagtail.wagtailcore.models import Page
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailadmin.edit_handlers import (
         FieldPanel,
-        MultiFieldPanel, StreamFieldPanel,
+        MultiFieldPanel,
         PageChooserPanel
         )
 
 
 class HomePage(Page):
     """
-    This HomePage model defines the top page of the website
+    The HomePage model references other pages to populate itself, grabbing the
+    headline, introductory text and image from those pages. Note that the
+    fields `organisation_name` and `copyright_notice` are used by the
+    `navigation_tags.py` file to populate content in the header or footer across
+    the entire site. Probably not ideal, but a shortcut to avoid creating another
+    model to store that information somewhere.
     """
+
     organisation_name = models.CharField("Who you are", max_length=254)
 
     strapline = models.CharField("Organisation strap line", max_length=254)
@@ -71,4 +76,5 @@ class HomePage(Page):
         ]
 
     # Only let the root page be a parent
+    # Docs docs.wagtail.io/en/v1.0b1/reference/page.html
     parent_page_types = ['wagtailcore.Page']

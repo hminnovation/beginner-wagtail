@@ -7,6 +7,8 @@ from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.contrib.wagtailapi import urls as wagtailapi_urls
 
+# The only amend to this urls.py from out-of-the-box Wagtail is to add the
+# API endpoint
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),

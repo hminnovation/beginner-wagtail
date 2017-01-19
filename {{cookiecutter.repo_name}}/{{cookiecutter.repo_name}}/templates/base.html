@@ -27,6 +27,10 @@
 
         {% block header %}
             <header><a href="/">{% title %}</a></header>
+            {% comment %}
+                This tag is controlled by navigation_tags.py and populated by 
+                a field on the HomePage model
+            {% endcomment %}
         {% endblock header %}
 
         {% block main-navigation %}

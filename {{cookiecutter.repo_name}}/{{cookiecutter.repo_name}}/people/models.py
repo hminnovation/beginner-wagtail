@@ -24,7 +24,7 @@ from {{cookiecutter.repo_name}}.blocks import GlobalStreamBlock
 class PersonStatus(ClusterableModel):
     """
     This snippet allows an editor to define what possible employment statuses
-    a staff member may have.
+    a staff member may have. Or whether they're a wizard...
     """
 
     search_fields = Page.search_fields + [
@@ -38,6 +38,8 @@ class PersonStatus(ClusterableModel):
     ]
 
     def __str__(self):
+        # We have to return a string to populate the snippets screen. The
+        # Snippets admin screen will only support a string
         return self.title
 
     class Meta:
@@ -51,7 +53,7 @@ class PersonStatusRelationship(models.Model):
     This defines the relationship between the `PersonEmploymentStatus` snippet
     above and the PersonPage below. It does so by defining a ForeignKey
     relationship between the two, which can be accessed by the respective
-    'related_name'.
+    'related_name'. The magic key is the 'related_name'
     Docs: http://www.tivix.com/blog/working-wagtail-i-want-my-m2ms/
     """
     person_page = ParentalKey(
@@ -69,7 +71,10 @@ class PersonStatusRelationship(models.Model):
 class PersonLocationRelationship(models.Model):
     """
     This defines the relationship between the `LocationPage`, within the
-    `locations` app, and the PersonPage below
+    `locations` app, and the PersonPage below. Again the magic key is
+    the related_name. On the LocationPage model in the locations app you can
+    see the reverse relationship of the related_name being used to populate
+    people on the LocationPage
     """
     person_page = ParentalKey(
         'PersonPage', related_name='person_location_relationship'
@@ -86,7 +91,8 @@ class PersonLocationRelationship(models.Model):
 class PersonSkillsRelationship(Orderable, models.Model):
     """
     This defines the relationship between the `SkillPage` within the `skills`
-    app and the PersonPage below allowing us to add skills to a person
+    app and the PersonPage below allowing us to add skills to a person. As above
+    the magic key is the related_name
     """
     person_page = ParentalKey(
         'PersonPage', related_name='person_skills_relationship'
@@ -113,7 +119,8 @@ class PersonPage(Page):
         GlobalStreamBlock(), verbose_name="Person's biography", blank=True
         )
     # We've defined the StreamBlock() within blocks.py that we've imported on
-    # line 12. Defining it in a different file
+    # line 20. Defining it in a different file aids consistency across the site
+    # but it can be defined on a per page basis if that's helpful for you
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),
@@ -137,16 +144,19 @@ class PersonPage(Page):
             ),
     ]
 
+    # Defining the parent. This means the editor will only be able to add the
+    # page under a PersonIndexPage and won't see that the PersonPage exists as
+    # an option until that parent page has been added.
     parent_page_types = [
         'PersonIndexPage'
     ]
 
     # Defining what content type can sit under the parent
-    subpage_types = [
-    ]
+    # The empty array will mean no children can be added
+    subpage_types = []
 
     # We iterate within the model over the skills, status
-    # and location so we don't have to on the template
+    # and location so they can be accessible to the template
     def skills(self):
         skills = [
             n.skills for n in self.person_skills_relationship.all()
@@ -165,11 +175,19 @@ class PersonPage(Page):
         ]
         return location
 
+    # For ForeignKeys that we want to access via the API we need to explictly
+    # access a specific field from the related content. I've added unnecessary
+    # verbosity here because we could use the `skills(self)` method above to
+    # give us the objects in a list within the for loop.
+    # This isn't terribly useful since I'm only returning the title but hopefully
+    # enough to be extendable/ understandable
     def skills_object(obj):
-        skills = ','.join([
-                str(n.skills.id) for n in obj.person_skills_relationship.all()
-        ])
-        return skills
+        skills_set = obj.person_skills_relationship.all()
+        skills = [
+            n.skills for n in skills_set
+        ]
+        for skill in skills:
+            return skill.title
 
     api_fields = [
         'image',

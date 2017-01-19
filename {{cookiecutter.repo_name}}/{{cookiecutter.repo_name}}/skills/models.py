@@ -32,7 +32,7 @@ class SkillsPage(Page):
     ]
 
     subpage_types = []
-    # Setting this means that no child page can be added to this page type
+    # Setting an empty array means that no child page can be added to this page type
 
     parent_page_types = [
         'SkillsIndexPage'
@@ -52,7 +52,7 @@ class SkillsPage(Page):
         parent_set = Page.objects.parent_of(
                 self).all()
         # Get all objects for the parent page within a queryset using
-        # Treebear's `parent_of`
+        # Treebeard's `parent_of`
 
         parent_url_string = [n.url for n in parent_set]
         # Get the URL out of the queryset
@@ -104,7 +104,7 @@ class SkillsIndexPage(Page):
         'SkillsPage'
     ]
 
-# Below we return the context so that we can access `skills` and `skills_index`
+# Below we return the context so that we can access `skills`
 # within our templates. The `skills` context is doing exactly what Wagtail would
 # do out of the box (e.g. display all live descendants of the index page and
 # order them by their publication date)
