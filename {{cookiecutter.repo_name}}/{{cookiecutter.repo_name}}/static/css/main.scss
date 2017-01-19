@@ -6,7 +6,7 @@
 @import 'mixin';
 @import 'typography';
 
-/* Architecture */
+/* SCAFFOLDING */
 body {
 }
 
@@ -97,7 +97,7 @@ footer.site-footer {
     padding-bottom: 40px;
 }
 
-/* Detail views */
+/* DETAIL VIEWS */
 .template-location-page {
     content {
         h1 {
@@ -114,6 +114,7 @@ footer.site-footer {
     }
     aside {
         @include row;
+        clear: both;
         display: flex;
         .status-location {
             display: flex;
@@ -131,6 +132,7 @@ footer.site-footer {
 .template-location-page {
     aside {
         @include row;
+        clear: both;
         .people {
             display: flex;
             flex-wrap: wrap;
@@ -163,7 +165,7 @@ footer.site-footer {
 .block-blockquote {
     width: 250px;
     float: right;
-    margin-right: 30%;
+    margin-right: 15%;
     margin-left: 50px;
     blockquote {
         font-family: $title-font-family;
@@ -179,19 +181,22 @@ footer.site-footer {
             opacity: 0.5;
         }
         footer {
-            // @TODO these are mostly resets because of sitewide footer
-            background-color: transparent;
             font-family: $font-family;
             font-style: normal;
             margin-top: 10px;
-            padding: 0;
-            // reset hack. sorry.
             padding-top: 10px;
             .attribute_group {
                 margin-top: 0;
                 font-weight: bold;
             }
         }
+    }
+    @include breakpoint(medium down) {
+        @include row;
+        display: block;
+        float: none;
+        margin-left: 0;
+        width: 90%;
     }
 }
 
@@ -208,10 +213,10 @@ footer.site-footer {
 }
 
 .block-embed {
-    @include row;
-    display: block;
+    @include row-left;
+    float: left;
     margin: $header-margin 0;
-    @include max-width-limit;
+    width: $max-width / 1.5;
     @include breakpoint(medium down){
         width: 80%
     }
@@ -221,19 +226,41 @@ footer.site-footer {
 }
 
 .block-image {
-    @include row;
+    img {
+        height: auto;
+    }
+    figcaption {
+        font-style: italic;
+        margin-top: 20px;
+        &::before {
+            color: #888;
+            content: "\1F4F7";
+            // An emojii because I feel like one. Also because <3 unicode
+            float: left;
+            font-size: 20px;
+            font-style: normal;
+            margin: -1px 5px 10px 0;
+        }
+    }
+    .image.contain {
+        @include row;
+        @include max-width-limit;
+    }
+    .image.full {
+        float: right;
+        // To address an adjacent block quote or 50% image
+        figcaption {
+            @include row
+        }
+    }
     .image.half {
         width: 50%;
         float: right;
-        /* @to-do this is awful and doesn't really work as supposed to */
+        max-width: 440px;
+        margin-right: 50px;
         figure {
             float: right;
             margin: 10px 0;
-            width: 80%;
-            img {
-                height: auto;
-                width: 80%;
-            }
         }
     }
     .image.full {
@@ -241,7 +268,7 @@ footer.site-footer {
     }
 }
 
-/* List views */
+/* LIST VIEWS */
 .list {
     @include grid;
     .list-3 {
@@ -276,11 +303,11 @@ footer.site-footer {
                 }
             }
             .skills {
-                margin: 0;
+                margin: 0 0 10px 0;
                 li {
                     display: inline-block;
                     list-style: none;
-                    margin: 0 auto 10px auto;
+                    margin: 0 auto;
                     span {
                         // To make the comma sit next to the link
                         margin-left: -2px;

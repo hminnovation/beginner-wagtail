@@ -37,6 +37,22 @@ $global-column: 10px;
     }
 }
 
+@mixin row-left  {
+  // @TODO It may be better to have a `row-left` and `row-right`
+  // mixin and replace all the `row` mixins?
+    display: block;
+    padding-left: 200px;
+    @include breakpoint(large down){
+        padding-left: 100px;
+    }
+    @include breakpoint(medium down){
+        padding-left: 50px;
+    }
+    @include breakpoint(small down){
+        padding-left: 20px;
+    }
+}
+
 @mixin max-width {
   max-width: $max-width;
 }
@@ -67,16 +83,16 @@ $global-column: 10px;
 }
 
 @mixin grid-column($columns) {
-  width: (100%/$columns)-2%;
+  width: (100%/$columns)-3%;
   margin-bottom: $global-column * 2;
   margin-right: $global-column * 2;
   background-color: $light-grey;
   overflow: hidden;
   @include breakpoint(medium down){
-    width: (100%/(($columns)-1))-2%;
+    width: (100%/(($columns)-1))-3%;
   }
   @include breakpoint(small down){
-    width: (100%/(($columns)-2))-2%;
+    width: (100%/(($columns)-2))-4%;
   }
 
   //   @if length($columns) == 2 {
