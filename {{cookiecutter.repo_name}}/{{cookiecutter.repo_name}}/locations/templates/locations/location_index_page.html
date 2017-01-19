@@ -17,16 +17,17 @@
 
         <div class="text">
         <h2><a href="{{ location.url }}">{{ location.title }}</a></h2>
-        <ul class="people">
-            {% for person in location.people  %}
-            {% comment %}@TODO create urls.py to use child reference to link to parent{% endcomment %}
-                <li class="person">
-                {% image person.image fill-100x100-c100 as person_photo %}
-                    <a href="{{ person.url }}"><img src="{{ person_photo.url }}" width="{{ person_photo.width }}" height="{{ person_photo.height }}" alt="{{ person_photo.alt }}" title="{{ person.title }}" /></a>
-                <small><a href="{{ person.url }}">{{ person.title }}</a></small></li>
-            {% endfor %}
-        </ul>
-        </p>
+        </div>
+        <div class="list-item-footer">
+            <ul class="people">
+                {% for person in location.people  %}
+                {% comment %}@TODO create urls.py to use child reference to link to parent{% endcomment %}
+                    <li class="person">
+                    {% image person.image fill-75x75-c100 as person_photo %}
+                        <a href="{{ person.url }}"><img src="{{ person_photo.url }}" width="{{ person_photo.width }}" height="{{ person_photo.height }}" alt="{{ person_photo.alt }}" title="{{ person.title }}" /></a>
+                    <small><a href="{{ person.url }}">{{ person.title }}</a></small></li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
     {% endfor %}

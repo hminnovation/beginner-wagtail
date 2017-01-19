@@ -35,7 +35,7 @@ header {
         &.current {
             border-bottom: 6px solid $link-color;
             padding-bottom: 8px;
-            margin-bottom: -12px;
+            margin-bottom: -14px;
         }
     }
 }
@@ -251,6 +251,12 @@ footer.site-footer {
 
 .people, .locations {
     .list-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        // note: we align `.people` to the bottom of the card w/out defining an 
+        // absolute height using justify-content on the parent item and then 
+        // `flex:1` on `.text`
         .image {
             max-height: 168px;
             overflow: hidden;
@@ -261,7 +267,8 @@ footer.site-footer {
             }
         }
         .text {
-            padding: 0 20px 20px;
+            padding: 0 20px;
+            flex: 1;
             h2 {
                 margin-top: 12px;
                 a {
@@ -274,18 +281,25 @@ footer.site-footer {
                     display: inline-block;
                     list-style: none;
                     margin: 0 auto 10px auto;
+                    span {
+                        // To make the comma sit next to the link
+                        margin-left: -2px;
+                    }
                 }
             }
+        }
+        .list-item-footer {
+            padding: 0 20px;
             .location {
                 display: flex;
                 font-size: 1.3em;
+                padding-bottom: 10px;
                 img {
                     margin: 5px 5px 0 -5px;
                     width: auto;
-                    height: 24px;
+                    height: 18px;
                 }
             }
-            // @TODO de-duplicate
             .people {
                 display: flex;
                 flex-wrap: wrap;
@@ -299,7 +313,7 @@ footer.site-footer {
                     text-align: center;
                     img {
                         border-radius: 100px;
-                        margin: 0 0 10px 0;
+                        margin: 0 auto 10px auto;
                     }
                 }
             }

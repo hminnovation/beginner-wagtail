@@ -21,14 +21,16 @@
             {% for skill in person.skills  %}
             {% comment %}@TODO create urls.py to use child reference to link to parent{% endcomment %}
                 <li><a href="#">{{ skill.title }}</a>
-                {% if not forloop.last %}, {% endif %}</li>
+                {% if not forloop.last %}<span>, </span>{% endif %}</li>
             {% endfor %}
         </ul>
-        <p class="location"><img src="/static/images/map-marker.png">
-        {% for place in person.location  %}
-            <a href="place.url">{{ place.title }}</a>
-            {% if not forloop.last %}, {% endif %}
-        {% endfor %}</p>
+        </div>
+        <div class="list-item-footer">
+            <p class="location"><img src="/static/images/map-marker.png">
+            {% for place in person.location  %}
+                <a href="{{ place.url }}">{{ place.title }}</a>
+                {% if not forloop.last %}, {% endif %}
+            {% endfor %}</p>
         </div>
     </div>
     {% endfor %}
