@@ -11,10 +11,21 @@
     </figure>
   </div>
 
+{% elif self.style == 'contain' %}
+  <div class="image contain">
+    <figure>
+      {% image self.image width-1088 %}
+        {% if self.caption %}
+          <figcaption>{{ self.caption }}</figcaption>
+        {% endif %}
+      </div>
+    </figure>
+  </div>
+
 {% elif self.style == 'half' %}
   <div class="image half">
       <figure>
-      {% image self.image width-1088 %}
+      {% image self.image width-600 %}
       {% if self.caption %}<figcaption>{{ self.caption }}</figcaption>{% endif %}
       </figure>
   </div>

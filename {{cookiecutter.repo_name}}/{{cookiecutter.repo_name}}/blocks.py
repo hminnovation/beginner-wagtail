@@ -37,6 +37,7 @@ class GlobalStreamBlock(StreamBlock):
         ('style', ChoiceBlock(choices=[
             ('', 'Select an image size'),
             ('full', 'Full-width'),
+            ('contain', 'Contained-width'),
             ('half', 'Half-width')
         ], required=False))
     ], icon="image", template="blocks/image.html")
