@@ -48,6 +48,26 @@ class SkillsPage(Page):
     # name 'skills_person_relationship' that connects to the parent page
     # 'person_page'
 
+    def parent_url(self):
+        parent_set = Page.objects.parent_of(
+                self).all()
+        # Get all objects for the parent page within a queryset using
+        # Treebear's `parent_of`
+
+        parent_url_string = [n.url for n in parent_set]
+        # Get the URL out of the queryset
+        # If you try to access it directly you'll hit the error:
+        # 'PageQuerySet' object has no attribute 'url'
+
+        for object in parent_url_string:
+            return object
+        # The PageQuerySet behaves exactly as you'd expect it to
+        # meaning that you could loop over the `parent_set` in the template
+        # by doing:
+        #   {% for object in parent_set %}
+        #       {{ object.url }}
+        #   {% endfor %}
+
 
 class SkillsIndexPage(Page):
     """
@@ -84,10 +104,12 @@ class SkillsIndexPage(Page):
         'SkillsPage'
     ]
 
-# Strictly speaking this isn't necessary since it's just doing the default
-# behaviour of Wagtail e.g. gets all skill pages that are my descendent, show
-# them if they're published ('live') and order by their first published date
-# Docs http://docs.wagtail.io/en/v1.6.3/topics/pages.html#template-context
+# Below we return the context so that we can access `skills` and `skills_index`
+# within our templates. The `skills` context is doing exactly what Wagtail would
+# do out of the box (e.g. display all live descendants of the index page and
+# order them by their publication date)
+# More info
+# Docs http://docs.wagtail.io/en/v1.8/topics/pages.html#template-context
     def get_context(self, request):
         context = super(SkillsIndexPage, self).get_context(request)
         context['skills'] = SkillsPage.objects.descendant_of(

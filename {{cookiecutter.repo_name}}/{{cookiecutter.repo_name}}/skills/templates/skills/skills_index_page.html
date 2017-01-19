@@ -5,7 +5,7 @@
 {% block content %}
 <content>
     {% for skill in skills %}
-            <h2>{{ skill.title }}</h2>
+            <h2><a name="{{ skill.slug }}"></a>{{ skill.title }}</h2>
 
     <ul class="people">
     {% for person in skill.people %}
@@ -15,5 +15,4 @@
 
     {% endfor %}
 </content>
-{% endblock %}
-{% endraw %}
+{% endblock %}{% endraw %}
