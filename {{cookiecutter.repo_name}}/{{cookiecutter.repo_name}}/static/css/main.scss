@@ -249,6 +249,10 @@ footer.site-footer {
     .image.full {
         float: right;
         // To address an adjacent block quote or 50% image
+        img {
+            width: 100%;
+            // To force full-width even if a smaller image uploaded
+        }
         figcaption {
             @include row
         }
