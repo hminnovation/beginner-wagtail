@@ -49,12 +49,12 @@ class SkillsPage(Page):
     # 'person_page'
 
     def parent_url(self):
-        parent_set = Page.objects.parent_of(
+        parent_query = Page.objects.parent_of(
                 self).all()
         # Get all objects for the parent page within a queryset using
         # Treebeard's `parent_of`
 
-        parent_url_string = [n.url for n in parent_set]
+        parent_url_string = [n.url for n in parent_query]
         # Get the URL out of the queryset
         # If you try to access it directly you'll hit the error:
         # 'PageQuerySet' object has no attribute 'url'
