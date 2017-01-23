@@ -15,7 +15,7 @@
                 <h3>Skills</h3>
                 <ul class="skills">
                 {% for skill in page.skills  %}
-                    <li><a href="{{ skill.url }}">{{ skill.title }}</a></li>
+                    <li><a href="{{ skill.parent_url }}#{{ skill.slug }}">{{ skill.title }}</a></li>
                 {% endfor %}
                 </ul>
             </div>
@@ -37,7 +37,7 @@
         </aside>
 
         <main role="main">
-            <h4 class>Biography</h4>
+            <h4 class="biography-title">Biography</h4>
             {{ page.body }}
         </main>
 </content>
