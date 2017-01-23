@@ -14,8 +14,7 @@ python manage.py runserver 0.0.0.0:8000
 ### Loading mock data
 Given that it's a content management system it's quite useful to have some data :)
 
-You can load it in by running
-`python manage.py load_initial_data.py`
+You can load it in by running `python manage.py load_initial_data`.
 
 ### Logging in
 Once you've run `python manage.py load_initial_data.py` you'll be able to visit [http://localhost:8000/admin/](http://localhost:8000/admin/) and login using
