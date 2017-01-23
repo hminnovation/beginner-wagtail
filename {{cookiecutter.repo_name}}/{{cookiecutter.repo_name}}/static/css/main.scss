@@ -122,10 +122,8 @@ footer.site-footer {
             margin-left: 80px;
         }
     }
-    main {
-        h4 {
+    .biography-title {
             @include row;
-        }
     }
 }
 
@@ -230,7 +228,9 @@ footer.site-footer {
         height: auto;
     }
     figcaption {
+        font-size: 0.9em;
         font-style: italic;
+        line-height: 1.4em;
         margin-top: 20px;
         &::before {
             color: #888;
@@ -239,7 +239,7 @@ footer.site-footer {
             float: left;
             font-size: 20px;
             font-style: normal;
-            margin: -1px 5px 10px 0;
+            margin: -1px 10px 15px 0;
         }
     }
     .image.contain {
@@ -262,9 +262,25 @@ footer.site-footer {
         float: right;
         max-width: 440px;
         margin-right: 50px;
+        margin-left: 20px;
         figure {
             float: right;
             margin: 10px 0;
+        }
+        img {
+            width: 100%;
+        }
+        @include breakpoint(medium down){
+            margin-left: 40px;
+        }
+        @include breakpoint(small down){
+            margin-left: 0px;
+            margin-right: 0px;
+            max-width: 100%;
+            width: 100%;
+            figure {
+                margin: 10px 20px;
+            }
         }
     }
     .image.full {
