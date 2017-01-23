@@ -18,7 +18,7 @@ This Cookiecutter project includes
  - Heroku configuration (including an example .env file)
  - Example apps: `home`, `people`, `skills` and `locations`
 
-## Usage
+## Installation
 The Cookiecutter project can be built with the following commands
 ```sh
 # Install Cookiecutter
@@ -33,6 +33,25 @@ The Cookiecutter project can be built with the following commands
 Note: The first time you run `vagrant up` it will likely take around 15 minutes to install the Wagtail Vagrant base box.
 
 **Please refer to `{{your_project_name}}`/readme.md for information on installing and running Wagtail once the Cookiecutter has been installed.**
+
+# Example screens
+![Beginner Wagtail homepage](screenshots/example-homepage.png "Beginner Wagtail homepage")
+Homepage with loaded data
+
+![Beginner Wagtail Location index page](screenshots/example-location-index.png "Beginner Wagtail Location index page")
+Location index page with loaded data
+
+![Beginner Wagtail people index page](screenshots/example-people-index.png "Beginner Wagtail people index page")
+People index page with loaded data
+
+![Beginner Wagtail person page](screenshots/example-person-page.png "Beginner Wagtail person page")
+Person page with loaded data
+
+![Beginner Wagtail Skills index](screenshots/example-skills-index.png "Beginner Wagtail skills index")
+Skills index page with loaded data
+
+![Admin screen](screenshots/wagtail-admin-area.png "Beginner Wagtail skills index")
+Absolutely out-of-the-box admin area screen
 
 # Troubleshooting
 ## Name of Cookiecutter project
